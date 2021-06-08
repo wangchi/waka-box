@@ -31,14 +31,17 @@ async function updateGist(stats) {
   }
 
   const lines = [];
-  for (let i = 0; i < Math.min(stats.data.languages.length, 5); i++) {
-    const data = stats.data.languages[i];
+  const languages = stats.data.languages
+  console.log('---- languages: ', languages)
+  for (let i = 0; i < Math.min(languages.length, 5); i++) {
+    const data = languages[i];
     const { name, percent, text: time } = data;
 
     const line = [
       trimRightStr(name, 10).padEnd(10),
       time.padEnd(14),
-      generateBarChart(percent, 21),
+      // generateBarChart(percent, 21),
+      generateBarChart(percent, 15),
       String(percent.toFixed(1)).padStart(5) + "%"
     ];
 
